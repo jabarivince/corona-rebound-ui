@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import Disclaimer from '../Disclaimer/Disclaimer' 
 import useStyles from '../../styles/styles'
 
 export default function Copyright() {
@@ -11,6 +12,7 @@ export default function Copyright() {
   return (
     <Container maxWidth="md" component="footer" className={classes.footer}>
       <Box mt={5}>
+      <Disclaimer />
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" >

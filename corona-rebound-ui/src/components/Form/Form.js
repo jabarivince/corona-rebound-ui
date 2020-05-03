@@ -24,7 +24,7 @@ const Ticker = (onChange, apiService) => {
 
         onChange(ticky)
       }}
-      renderInput={params => <TextField  {...params} label="Company" variant="outlined" />}
+      renderInput={params => <TextField {...params} label="Company" variant="outlined" />}
       renderOption={option => <span>{option.symbol} - {option.description}</span>}
     />
   )
@@ -92,22 +92,45 @@ export default function Form() {
     if (!data) { return null }
 
     const growth = (data?.percent_change * 100).toFixed(2)
+    const profit = (data?.projected_investment - investment).toFixed(2)
+
+    const message = growth >= 0 ?
+    (<p>
+      Nice! Looks like if you invested ${investment} in {ticker}, if prices <strong>rebound, </strong>
+      you will have ${data?.projected_investment} with a profit of ${profit}.
+    </p>) :
+    (<p>
+      Oh no! Maybe investing in {ticker} might not return the profit you were looknig for. You
+      would lose ${profit * -1}. Don't worry! Try another company.
+    </p>)
+
+    const color = growth >= 0 ? 'green' : 'red'
 
     return (
-      <table align="center" style={{
-          borderStyle: 'solid',
-          borderWidth: '4px',
-          borderColor: data?.percent_change >= 0 ? 'green' : 'red',
-          borderRadius: '4px',
-          padding: '2%',
-      }}>
-        <tbody>
-          <tr><td>Value of shares:</td><td>${data?.projected_investment}</td></tr>
-          <tr><td>Current Stock price:</td><td>${data?.current_price}</td></tr>
-          <tr><td>Previous stock price:</td><td>${data?.before_price}</td></tr>
-          <tr><td>Growth (%):</td><td>{growth}%</td></tr>
-        </tbody>
-      </table>
+      <div>
+        <div style={{
+          paddingLeft: '10%',
+          paddingRight: '10%',
+        }}>
+          {message}
+        </div>
+
+        <table align="center" style={{
+            borderStyle: 'solid',
+            borderWidth: '4px',
+            borderColor: color,
+            borderRadius: '4px',
+            padding: '2%',
+        }}>
+          <tbody>
+            <tr><td>Projected value:</td><td>${data?.projected_investment}</td></tr>
+            <tr><td>Profit:</td><td>{growth < 0 ? `-$${(-1 * profit)}` : `$${profit}`}</td></tr>
+            <tr><td>Current stock price:</td><td>${data?.current_price}</td></tr>
+            <tr><td>Previous stock price:</td><td>${data?.before_price}</td></tr>
+            <tr><td>Growth (%):</td><td>{growth}%</td></tr>
+          </tbody>
+        </table>
+      </div>
     )
   }
 

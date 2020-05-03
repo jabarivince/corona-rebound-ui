@@ -4,9 +4,10 @@ import NYSE from '../data/NYSE'
 
 const URL = 'https://corona-rebound.herokuapp.com/api/v1/stocks'
 
-const exchanges = [ ...NASDAQ, ...NYSE ].map(listing => {
+const exchanges = [ ...NASDAQ, ...NYSE ]
+.map(listing => {
   return {
-    symbol: listing.Symbol,
+    symbol: listing.Symbol.replace('.', '-'),
     description: listing.Description
   }
 })
