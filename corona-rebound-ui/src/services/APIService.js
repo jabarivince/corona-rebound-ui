@@ -26,17 +26,6 @@ export default class APIService {
     .then(response => response.data)
   }
 
-  search(term) {
-    const t = term.toLowerCase()
-    const results = exchanges.filter(listing => listing.symbol.includes(t))
-
-    if (results > 10) {
-      results.length = 10
-    }
-
-    return results
-  }
-
   dummyRequest() {
     return axios.get(URL).then(response => response.data)
   }

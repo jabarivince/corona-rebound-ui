@@ -8,6 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import APIService from '../../services/APIService'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import TextField from '@material-ui/core/TextField'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 
 import useStyles from '../../styles/styles'
 import clsx from 'clsx'
@@ -15,7 +16,7 @@ import clsx from 'clsx'
 const Ticker = (onChange, apiService) => {
   return (
     <Autocomplete
-      style={{ width: 200 }}
+      style={{ width: 275 }}
       options={apiService.exchanges}
       getOptionLabel={option => `${option.symbol} ${option.description}`}
       onInputChange={(e, value) => {
@@ -33,6 +34,7 @@ const input = (classes, text, onChange, prefix) => {
   return (
     <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
         <Input
+          type='number'
           startAdornment={prefix ? <InputAdornment position="start">{prefix}</InputAdornment> : null }
           aria-describedby="standard-weight-helper-text"
           onChange={e => onChange(e.target.value)}
@@ -49,6 +51,7 @@ export default function Form() {
   const [investment, setInvestment] = useState(undefined)
   const [daysBeforePandemic, setDaysBeforePandemic] = useState(undefined)
   const [data, setData] = useState(undefined)
+  const [showLoadingSpinner, setShowLoadingSpinner] = useState(false)
   const apiService = new APIService()
 
   const SubmitButton = () => {
@@ -67,14 +70,17 @@ export default function Form() {
             return
           }
 
+          setShowLoadingSpinner(true)
+
           apiService.submit({
             ticker: ticker,
             investment: investment,
             daysBeforePandemic: daysBeforePandemic
           })
           .then(setData)
+          .then(() => setShowLoadingSpinner(false))
         }}>
-          See what you would earn
+          {showLoadingSpinner ? <LoadingSpinner /> : 'See what you would earn'}
         </Button>
         <br/>
         <br/>
@@ -108,7 +114,7 @@ export default function Form() {
   const Rows = [
     { title: 'Initial Investment', content: input(classes, null, setInvestment, '$') },
     { title: 'Company', content: Ticker(setTicker, apiService) },
-    { title: 'Days before pandemic', content: input(classes, null, setDaysBeforePandemic) },
+    { title: 'Days before pandemic', content: input(classes, 'COVID-19 pandemic officially began 3/11/20', setDaysBeforePandemic) },
   ].map((value, index) => {
     return (
       <tr key={index}>

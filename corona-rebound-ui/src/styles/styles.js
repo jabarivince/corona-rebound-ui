@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
   textField: {
-    width: '25ch',
+    width: '35ch',
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
