@@ -9,7 +9,7 @@ export default function Disclaimer() {
   `
 
   return (
-    <div style={{ padding: '2%' }}>
+    <div style={{ padding: '2%', textAlign: 'center' }}>
       <p>
         <i><strong>DISCLAIMER: </strong>{text}</i>
       </p>
