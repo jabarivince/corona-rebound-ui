@@ -8,10 +8,6 @@ const useStyles = makeStyles((theme) => ({
       listStyle: 'none',
     },
   },
-   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
     margin: {
     margin: theme.spacing(1),
   },
@@ -34,17 +30,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1, 1.5),
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6),
-  },
-  cardHeader: {
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
-  },
-  cardPricing: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'baseline',
-    marginBottom: theme.spacing(2),
+    padding: theme.spacing(4, 0, 4),
   },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,

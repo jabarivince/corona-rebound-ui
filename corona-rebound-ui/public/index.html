@@ -3,12 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Website for checking stock pre-pandemic stock prices"/>
 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script data-ad-client="ca-pub-9993219908288371" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <title>Rona Rebound</title>
   </head>
@@ -16,7 +12,28 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <script src="/__/firebase/7.14.2/firebase-app.js"></script>
-    <script src="/__/firebase/init.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBJgE1tubVU5ud0AQUGN4e2bRAVBO_k43c",
+        authDomain: "corona-rebound.firebaseapp.com",
+        databaseURL: "https://corona-rebound.firebaseio.com",
+        projectId: "corona-rebound",
+        storageBucket: "corona-rebound.appspot.com",
+        messagingSenderId: "1077806466597",
+        appId: "1:1077806466597:web:b9a3d6eef2d99816c6a1cc",
+        measurementId: "G-YWYFVNKYKH"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>

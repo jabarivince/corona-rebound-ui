@@ -13,7 +13,7 @@ export default function Jumbotron() {
        Rona Rebound
       </Typography>
       <Typography variant="h5" align="center" color="textSecondary" component="p">
-         Predict what your current investment will be if stock prices return back to pre pandemic prices.
+         What will your investment today grow to if stocks <strong>rebound</strong> to pre-pandemic prices?
       </Typography>
     </Container>
   )
