@@ -27,6 +27,7 @@ export default class APIService {
       investment_type: 'dollars'
     })
     .then(response => response.data)
+    .catch(error => alert('Oops! Something went wrong'))
   }
 
   dummyRequest() {
