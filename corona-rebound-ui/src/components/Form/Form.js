@@ -16,7 +16,7 @@ import clsx from 'clsx'
 const Ticker = (onChange, apiService) => {
   return (
     <Autocomplete
-      // style={{ maxWidth: 275 }}
+      // style={{ width: 275 }}
       options={apiService.exchanges}
       getOptionLabel={option => `${option.symbol} ${option.description}`}
       onInputChange={(e, value) => {
