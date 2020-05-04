@@ -55,6 +55,8 @@ export default function Form() {
   const [showLoadingSpinner, setShowLoadingSpinner] = useState(false)
   const apiService = new APIService()
 
+  apiService.dummyRequest()
+
   const SubmitButton = () => {
     return (
       <div style={{
@@ -157,8 +159,8 @@ export default function Form() {
 
   return (
     <Container maxWidth="md" component="main">
-      <table align="center" style={{ 
-        borderSpacing: '16px', 
+      <table align="center" style={{
+        borderSpacing: '16px',
         maxWidth: '100%',
         tableLayout: 'fixed'
         }}>
