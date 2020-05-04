@@ -16,7 +16,7 @@ import clsx from 'clsx'
 const Ticker = (onChange, apiService) => {
   return (
     <Autocomplete
-      style={{ width: 275 }}
+      // style={{ maxWidth: 275 }}
       options={apiService.exchanges}
       getOptionLabel={option => `${option.symbol} ${option.description}`}
       onInputChange={(e, value) => {
@@ -51,6 +51,7 @@ export default function Form() {
   const [investment, setInvestment] = useState(undefined)
   const [daysBeforePandemic, setDaysBeforePandemic] = useState(undefined)
   const [data, setData] = useState(undefined)
+  const [shouldHide, setShouldHide] = useState(true);
   const [showLoadingSpinner, setShowLoadingSpinner] = useState(false)
   const apiService = new APIService()
 
@@ -79,6 +80,7 @@ export default function Form() {
           })
           .then(setData)
           .then(() => setShowLoadingSpinner(false))
+          .then(() => setShouldHide(false))
         }}>
           {showLoadingSpinner ? <LoadingSpinner /> : 'See what you would earn'}
         </Button>
@@ -89,18 +91,17 @@ export default function Form() {
   }
 
   const Summary = () => {
-    if (!data) { return null }
+    if (!data || shouldHide) { return null }
 
     const growth = (data?.percent_change * 100).toFixed(2)
     const profit = (data?.projected_investment - investment).toFixed(2)
-
     const message = growth >= 0 ?
     (<p>
-      Nice! Looks like if you invested ${investment} in {ticker}, if prices <strong>rebound, </strong>
+      Nice! Looks like if you invest ${investment} in {ticker}, if prices <strong>rebound, </strong>
       you will have ${data?.projected_investment} with a profit of ${profit}.
     </p>) :
     (<p>
-      Oh no! Maybe investing in {ticker} might not return the profit you were looknig for. You
+      Oh no! Maybe investing in {ticker} might not return the profit you were looking for. You
       would lose ${profit * -1}. Don't worry! Try another company.
     </p>)
 
@@ -134,10 +135,17 @@ export default function Form() {
     )
   }
 
+  const f = (g) => {
+    return (v) => {
+      g(v)
+      setShouldHide(true)
+    }
+  }
+
   const Rows = [
-    { title: 'Initial Investment', content: input(classes, null, setInvestment, '$') },
-    { title: 'Company', content: Ticker(setTicker, apiService) },
-    { title: 'Days before pandemic', content: input(classes, 'COVID-19 pandemic officially began 3/11/20', setDaysBeforePandemic) },
+    { title: 'Initial Investment', content: input(classes, null, f(setInvestment), '$') },
+    { title: 'Company', content: Ticker(f(setTicker), apiService) },
+    { title: 'Days before pandemic', content: input(classes, 'COVID-19 pandemic officially began 3/11/20', f(setDaysBeforePandemic)) },
   ].map((value, index) => {
     return (
       <tr key={index}>
@@ -149,7 +157,11 @@ export default function Form() {
 
   return (
     <Container maxWidth="md" component="main">
-      <table align="center" style={{ borderSpacing: '16px', }}>
+      <table align="center" style={{ 
+        borderSpacing: '16px', 
+        maxWidth: '100%',
+        tableLayout: 'fixed'
+        }}>
         <tbody>
           { Rows }
         </tbody>
