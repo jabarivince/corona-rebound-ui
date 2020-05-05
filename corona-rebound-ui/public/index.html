@@ -38,10 +38,81 @@
     <script data-ad-client="ca-pub-9993219908288371" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <title>Rona Rebound</title>
+
+    <style>
+      .han {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <div class='han'>
+        <h1>Rona Rebound</h1>
+
+        <h2>What will your investment today grow to if stocks rebound to pre-pandemic prices?</h2>
+
+        <form>
+          <label for="investment" type="number">Investment:</label>
+          <input id="investment" name="investment"/><br>
+
+          <label for="ticker" type="text">Ticker:</label>
+          <input id="ticker" name="ticker"/><br>
+
+          <label for="days">Days:</label>
+          <input id="days" name="days" type="number"/><br>
+
+          <button id="submit" type="submit">Submit</button>
+        </form>
+
+        <p id="sentence"></p>
+
+        <p>
+          <i>
+            DISCLAIMER: This website and the information contained herein is not intended to be a source of financial, investment or other professional advice. This website is for general information on matters of interest only, and the information is provided with the understanding that the authors are not engaged in rendering any investing, financial or other professional advice or services. Thus, information on this site should not be used as such. Before making any decsions or taking any actions, consult with a professional investment, financial or other competent advisor. While the authors of this site make every attempt to ensure the accuracy of information contained in this site, all information is provided with no guarantee of completeness, accuracy, or timeliness and authors are not responsible for any errors or omissions or any results obtained from the use of this information. In no event will the authors be liable to you or anyone for any decision made or action take in reliance of the information on this site.
+          </i>
+        </p>
+
+        <footer>
+          <div>Copyright © Rona Rebound 2020.</div>
+        </footer>
+    </div>
+
+    <script>
+      document.getElementById('submit').addEventListener('click', function(event) {
+        event.preventDefault()
+
+        const investment = document.getElementById("investment")
+        const ticker = document.getElementById("ticker")
+        const days = document.getElementById("days")
+
+        fetch('https://corona-rebound.herokuapp.com/api/v1/stocks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            investment: investment.value,
+            ticker: ticker.value,
+            days_before_pandemic: days.value,
+            investment_type: "dollars",
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          let x = document.getElementById("sentence")
+
+          x.innerHTML = `
+          If you invest $${investment.value} in ${data.ticker}, and the stock price rebounds to what it was
+          ${data.days_before_pandemic} days before the pandemic,
+          you would have a projected portfolio value of ${data.projected_investment}! That's a
+          a growth of ${data.percent_change}%! Yay
+          `
+        })
+      })
+    </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>

@@ -13,6 +13,8 @@ const exchanges = [ ...NASDAQ, ...NYSE ]
 })
 
 export default class APIService {
+  static didFireDummyRequest = false
+
   get exchanges() {
     return exchanges
   }
@@ -25,9 +27,16 @@ export default class APIService {
       investment_type: 'dollars'
     })
     .then(response => response.data)
+    .catch(error => alert('Oops! Something went wrong'))
   }
 
   dummyRequest() {
-    return axios.get(URL).then(response => response.data)
+    if (APIService.didFireDummyRequest) {
+      return Promise.resolve()
+    }
+
+    APIService.didFireDummyRequest = true
+
+    return axios.post(URL).then(response => response.data)
   }
 }
