@@ -7,7 +7,7 @@ const URL = 'https://corona-rebound.herokuapp.com/api/v1/stocks'
 const exchanges = [ ...NASDAQ, ...NYSE ]
 .map(listing => {
   return {
-    symbol: listing.Symbol.replace('.', '-'),
+    symbol: listing.Symbol.replace('-', '-P-').replace('.', '-'),
     description: listing.Description
   }
 })
