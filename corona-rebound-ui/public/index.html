@@ -43,6 +43,12 @@
         display: none;
       }
     </style>
+    <script type="text/javascript">
+    window._mNHandle = window._mNHandle || {};
+    window._mNHandle.queue = window._mNHandle.queue || [];
+    medianet_versionId = "3121199";
+</script>
+<script src="https://contextual.media.net/dmedianet.js?cid=8CUV0NUG5" async="async"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -110,7 +116,7 @@
           a growth of ${data.percent_change}%! Yay
           `
         })
-      })
+      })//comment
     </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -136,5 +142,16 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     </script>
+
+    <!-- Twitter universal website tag code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+      a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init','o3oq8');
+      twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
   </body>
 </html>

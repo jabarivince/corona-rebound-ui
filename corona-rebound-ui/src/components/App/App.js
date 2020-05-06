@@ -1,4 +1,5 @@
 import Copyright from '../Copyright/Copyright'
+import Ad from '../Ad/Ad'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
@@ -12,6 +13,7 @@ export default function App() {
       <Header />
       <Jumbotron />
       <Form />
+      <Ad />
       <Copyright />
     </Fragment>
   );
