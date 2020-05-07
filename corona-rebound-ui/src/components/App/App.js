@@ -1,9 +1,9 @@
 import Copyright from '../Copyright/Copyright'
-import Ad from '../Ad/Ad'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Form from '../Form/Form'
 import Header from '../Header/Header'
 import Jumbotron from '../Jumbotron/Jumbotron'
+import Ad from '../Ad/Ad';
 import React, { Fragment } from 'react';
 
 export default function App() {
@@ -13,8 +13,7 @@ export default function App() {
       <Header />
       <Jumbotron />
       <Form />
-      <Ad />
-      <Copyright />
+      <Ad/>
     </Fragment>
   );
 }

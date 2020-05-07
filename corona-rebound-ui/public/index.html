@@ -29,20 +29,21 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="theme-color" content="#ffffff" />
 
+    <meta name="propeller" content="987025eaf4262af90b07a7927d6c495f">
+
     <link rel="apple-touch-startup-image" sizes="512x512" href="rona-rebound_32x32.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="rona-rebound_32x32.png" />
     <link rel="icon" href="%PUBLIC_URL%/rona-rebound_32x32.png" />
     <link rel="icon" href="rona-rebound_32x32.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/load-awesome@1.1.0/css/ball-clip-rotate.min.css">
     <script data-ad-client="ca-pub-9993219908288371" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
+<script type="text/javascript" data-cfasync="false">
+var pmauid = '52093';
+var pmawid = '47803';
+var fq = '0';
+</script>
+<script type="text/javascript" data-cfasync="false" src="https://cdn.popmyads.com/pma.js"></script>
     <title>Rona Rebound</title>
-
-    <style>
-      .han {
-        display: none;
-      }
-    </style>
     <script type="text/javascript">
     window._mNHandle = window._mNHandle || {};
     window._mNHandle.queue = window._mNHandle.queue || [];
@@ -52,73 +53,29 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="text/javascript" src="//uprimp.com/bnr.php?section=left&pub=423737&format=728x90&ga=g"></script>
+<noscript><a href="https://yllix.com/publishers/423737" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/728x90.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>
     <div id="root"></div>
+    <script type="text/javascript" src="//uprimp.com/bnr.php?section=bottom&pub=423737&format=728x90&ga=g"></script>
+<noscript><a href="https://yllix.com/publishers/423737" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/728x90.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>
 
-    <div class='han'>
-        <h1>Rona Rebound</h1>
-
-        <h2>What will your investment today grow to if stocks rebound to pre-pandemic prices?</h2>
-
-        <form>
-          <label for="investment" type="number">Investment:</label>
-          <input id="investment" name="investment"/><br>
-
-          <label for="ticker" type="text">Ticker:</label>
-          <input id="ticker" name="ticker"/><br>
-
-          <label for="days">Days:</label>
-          <input id="days" name="days" type="number"/><br>
-
-          <button id="submit" type="submit">Submit</button>
-        </form>
-
-        <p id="sentence"></p>
-
-        <p>
-          <i>
-            DISCLAIMER: This website and the information contained herein is not intended to be a source of financial, investment or other professional advice. This website is for general information on matters of interest only, and the information is provided with the understanding that the authors are not engaged in rendering any investing, financial or other professional advice or services. Thus, information on this site should not be used as such. Before making any decsions or taking any actions, consult with a professional investment, financial or other competent advisor. While the authors of this site make every attempt to ensure the accuracy of information contained in this site, all information is provided with no guarantee of completeness, accuracy, or timeliness and authors are not responsible for any errors or omissions or any results obtained from the use of this information. In no event will the authors be liable to you or anyone for any decision made or action take in reliance of the information on this site.
-          </i>
-        </p>
-
-        <footer>
-          <div>Copyright © Rona Rebound 2020.</div>
-        </footer>
+  <div style={{ padding: '2%', textAlign: 'center', fontSize: '10px' }}>
+      <p>
+        <i><strong>DISCLAIMER: </strong>  This website and the information contained herein is not intended to be a source
+    of financial, investment or other professional advice. This website is for general
+    information on matters of interest only, and the information is provided with the
+    understanding that the authors are not engaged in rendering any investing, financial
+    or other professional advice or services. Thus, information on this site should not
+    be used as such. Before making any decisions or taking any actions, consult with a
+    professional investment, financial or other competent advisor. While the authors
+    of this site make every attempt to ensure the accuracy of information contained in
+    this site, all information is provided with no guarantee of completeness, accuracy,
+    or timeliness and authors are not responsible for any errors or omissions or any
+    results obtained from the use of this information. In no event will the authors be
+    liable to you or anyone for any decision made or action take in reliance of the
+    information on this site.</i>
+      </p>
     </div>
-
-    <script>
-      document.getElementById('submit').addEventListener('click', function(event) {
-        event.preventDefault()
-
-        const investment = document.getElementById("investment")
-        const ticker = document.getElementById("ticker")
-        const days = document.getElementById("days")
-
-        fetch('https://corona-rebound.herokuapp.com/api/v1/stocks', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            investment: investment.value,
-            ticker: ticker.value,
-            days_before_pandemic: days.value,
-            investment_type: "dollars",
-          })
-        })
-        .then(res => res.json())
-        .then(data => {
-          let x = document.getElementById("sentence")
-
-          x.innerHTML = `
-          If you invest $${investment.value} in ${data.ticker}, and the stock price rebounds to what it was
-          ${data.days_before_pandemic} days before the pandemic,
-          you would have a projected portfolio value of ${data.projected_investment}! That's a
-          a growth of ${data.percent_change}%! Yay
-          `
-        })
-      })//comment
-    </script>
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
@@ -143,6 +100,7 @@
       firebase.analytics();
     </script>
 
+    
     <!-- Twitter universal website tag code -->
     <script>
       !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);

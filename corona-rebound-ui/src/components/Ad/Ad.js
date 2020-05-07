@@ -6,17 +6,8 @@ export default function Ad() {
   const classes = useStyles()
 
   return (
-    <Container maxWidth="md" component="footer" className={classes.footer}>
-     <div id="126942856">
-    <script type="text/javascript">
-        try {
-            window._mNHandle.queue.push(function (){
-                window._mNDetails.loadTag("126942856", "160x600", "126942856");
-            })
-        }
-        catch (error) {}
-    </script>
-</div>
-    </Container>
-  )
+<span>
+<script type="text/javascript" src="//uprimp.com/bnr.php?section=left&pub=423737&format=728x90&ga=g"></script>
+<noscript><a href="https://yllix.com/publishers/423737" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/728x90.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>
+  </span>)
 }
