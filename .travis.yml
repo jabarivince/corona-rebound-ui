@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - '10.0'
+
+sudo: required
+
+cache:
+  directories:
+  - node_modules
+
+before_script:
+  - cd corona-reboud-ui
+  - npm install -g firebase-tools
+  - npm install
+
+script:
+  # - npm test
+  - npm run build
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
+  on:
+    branch: master
